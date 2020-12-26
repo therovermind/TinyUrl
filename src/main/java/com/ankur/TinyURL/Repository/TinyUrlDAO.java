@@ -1,8 +1,12 @@
 package com.ankur.TinyURL.Repository;
 
-import org.springframework.stereotype.Repository;
+import com.ankur.TinyURL.Entity.TinyUrlEntity;
 
-@Repository
-public class TinyUrlDAO {
+public interface TinyUrlDAO {
+	//to save the url
+	public long saveUrl(TinyUrlEntity t);
+	
+	//to get the url
+	public String getUrl(long sequenceNo);
 
 }

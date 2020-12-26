@@ -1,8 +1,10 @@
 package com.ankur.TinyURL.Service;
 
-import org.springframework.stereotype.Service;
-
-@Service
-public class TinyUrlService {
+public interface TinyUrlService {
+	//this method will unique base converted value.
+	public String getShortString(long l);
+	
+	//this will give full url.
+	public String getUrl( String s);
 
 }

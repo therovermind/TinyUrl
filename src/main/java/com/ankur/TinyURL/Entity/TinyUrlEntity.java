@@ -12,10 +12,21 @@ public class TinyUrlEntity {
 	
 	@Id
 	@GeneratedValue
-	int id;
+	private int id;
 	@Column(name="ORIGIN_URL")
-	String originalUrl;
-	@Column(name="SHORT_URL")
-	String smallUrl;
+	private String originalUrl;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getOriginalUrl() {
+		return originalUrl;
+	}
+	public void setOriginalUrl(String originalUrl) {
+		this.originalUrl = originalUrl;
+	}
+	
 	
 }
