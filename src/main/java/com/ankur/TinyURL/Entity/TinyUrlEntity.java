@@ -15,12 +15,6 @@ public class TinyUrlEntity {
 	private int id;
 	@Column(name="ORIGIN_URL")
 	private String originalUrl;
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
 	public String getOriginalUrl() {
 		return originalUrl;
 	}

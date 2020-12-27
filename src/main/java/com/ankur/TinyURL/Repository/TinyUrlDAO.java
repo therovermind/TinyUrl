@@ -4,9 +4,9 @@ import com.ankur.TinyURL.Entity.TinyUrlEntity;
 
 public interface TinyUrlDAO {
 	//to save the url
-	public long saveUrl(TinyUrlEntity t);
+	public int saveUrl(TinyUrlEntity t);
 	
 	//to get the url
-	public String getUrl(long sequenceNo);
+	public String getUrl(int sequenceNo);
 
 }

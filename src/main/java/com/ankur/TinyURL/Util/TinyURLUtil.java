@@ -2,7 +2,7 @@ package com.ankur.TinyURL.Util;
 
 public class TinyURLUtil {
     
-	public String getShortString(int n) {
+	public static String getShortString(int n) {
 		String shortendUrl="";
 		char[] map = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789".toCharArray();
 		while(n>0) {
@@ -12,7 +12,7 @@ public class TinyURLUtil {
 		return shortendUrl;
 	}
 	
-	public int getId(String shortURL) {
+	public static int getId(String shortURL) {
 		int id=0;
 		for (int i = 0; i < shortURL.length(); i++)  
         {  
