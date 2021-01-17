@@ -7,6 +7,6 @@ public interface TinyUrlDAO {
 	public int saveUrl(TinyUrlEntity t);
 	
 	//to get the url
-	public String getUrl(int sequenceNo);
+	public String getUrl(int sequenceNo) throws Exception;
 
 }

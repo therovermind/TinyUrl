@@ -18,9 +18,12 @@ public class TinyUrlServiceImpl implements TinyUrlService {
 	@Autowired
 	Environment env;
 	
-	public String getShortString(UrlModel urlModel) {
-		
+	public String getShortString(UrlModel urlModel) throws Exception {
+		String regex = "(http|Http|Https|https|ftp)?:?(\\/\\/www)?\\..*\\..*";
 		String url = urlModel.getUrl();
+		if(!url.matches(regex)) {
+			throw new Exception("UNCORRECT_URL");
+		}
 		TinyUrlEntity entity = new TinyUrlEntity();
 		entity.setOriginalUrl(url);
 		int id = tinyUrlDAO.saveUrl(entity);
@@ -29,7 +32,7 @@ public class TinyUrlServiceImpl implements TinyUrlService {
 		return shortUrl;
 	}
 	
-	public String getUrl(String url) {
+	public String getUrl(String url) throws Exception {
 		String[] s = url.split("/");
 		String shortValue = s[s.length-1];
 		int id = TinyURLUtil.getId(shortValue);

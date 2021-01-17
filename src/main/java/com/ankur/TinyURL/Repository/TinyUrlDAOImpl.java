@@ -31,9 +31,12 @@ public class TinyUrlDAOImpl implements TinyUrlDAO {
 		}
 	}
 	
-	public String getUrl(int no) {
+	public String getUrl(int no) throws Exception {
 
 		TinyUrlEntity t = e.find(TinyUrlEntity.class, no);
+		if(t==null) {
+			throw new Exception("NOT_FOUND");
+		}
 		String url = t.getOriginalUrl() ;
 		return url;
 	}
