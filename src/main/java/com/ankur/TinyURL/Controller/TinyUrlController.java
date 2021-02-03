@@ -1,6 +1,7 @@
 package com.ankur.TinyURL.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -25,6 +26,9 @@ public class TinyUrlController {
 	@Autowired
 	TinyUrlService urlService;
 	
+	@Autowired
+	Environment env;
+	
 	@GetMapping("/api/{url}")
 	public ResponseEntity<UrlModel> getUrl(@PathVariable String url) {
 		try {
@@ -34,7 +38,7 @@ public class TinyUrlController {
 		return new ResponseEntity<UrlModel>(newUrlModel, HttpStatus.OK);
 		}
 		catch(Exception e) {
-			throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE,e.getMessage());
+			throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE,env.getProperty(e.getMessage()));
 		}
 	}
 	
@@ -47,7 +51,7 @@ public class TinyUrlController {
 		return new ResponseEntity<UrlModel>(newUrlModel, HttpStatus.OK);
 		}
 		catch(Exception e) {
-			throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE,e.getMessage());
+			throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE,env.getProperty(e.getMessage()));
 		}
 	}
 	
