@@ -16,19 +16,10 @@ public class TinyUrlDAOImpl implements TinyUrlDAO {
 	@PersistenceContext
 	EntityManager e;
 	
-	private Session getSession() {
-        return e.unwrap(Session.class);
-    }
-	
-	public int saveUrl(TinyUrlEntity t) {
-		Session session = this.getSession();
-		try {
-			e.persist(t);
-			int lastId = ((BigInteger) session.createSQLQuery("SELECT LAST_INSERT_ID()").uniqueResult()).intValue();
-		    return lastId;
-		} finally {
-		    session.close();
-		}
+	public void saveUrl(TinyUrlEntity t) {
+		e.persist(t);
+		e.flush();
+		
 	}
 	
 	public String getUrl(int no) throws Exception {

@@ -10,12 +10,20 @@ import javax.persistence.Table;
 
 @Entity 
 @Table(name="URLS")
-@SequenceGenerator(name="seq", initialValue=100001, allocationSize=1)
 public class TinyUrlEntity {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="seq")
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="sId")
+	private int sId;
+	@Column(name="id")
 	private int id;
+	public String getId() {
+		return originalUrl;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	@Column(name="ORIGIN_URL")
 	private String originalUrl;
 	public String getOriginalUrl() {

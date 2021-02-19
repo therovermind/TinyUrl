@@ -18,6 +18,8 @@ public class TinyUrlServiceImpl implements TinyUrlService {
 	@Autowired
 	Environment env;
 	
+	private volatile int id = 100000;
+	
 	public String getShortString(UrlModel urlModel) throws Exception {
 		String regex = "(http|Http|Https|https|ftp)?:?(\\/\\/www)?\\..*\\..*";
 		String url = urlModel.getUrl();
@@ -26,7 +28,9 @@ public class TinyUrlServiceImpl implements TinyUrlService {
 		}
 		TinyUrlEntity entity = new TinyUrlEntity();
 		entity.setOriginalUrl(url);
-		int id = tinyUrlDAO.saveUrl(entity);
+		id = id +1;
+		entity.setId(id);
+	    tinyUrlDAO.saveUrl(entity);
 		String shortValue = TinyURLUtil.getShortString(id);
 		String shortUrl = "localhost:"+ env.getProperty("server.port") +"/" + shortValue;
 		return shortUrl;

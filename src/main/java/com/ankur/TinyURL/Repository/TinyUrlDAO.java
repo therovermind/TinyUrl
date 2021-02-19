@@ -4,7 +4,7 @@ import com.ankur.TinyURL.Entity.TinyUrlEntity;
 
 public interface TinyUrlDAO {
 	//to save the url
-	public int saveUrl(TinyUrlEntity t);
+	public void saveUrl(TinyUrlEntity t);
 	
 	//to get the url
 	public String getUrl(int sequenceNo) throws Exception;
