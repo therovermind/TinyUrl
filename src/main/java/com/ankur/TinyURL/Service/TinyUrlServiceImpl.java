@@ -18,10 +18,10 @@ public class TinyUrlServiceImpl implements TinyUrlService {
 	@Autowired
 	Environment env;
 	
-	private volatile int id = 100000;
+	private volatile int id = 100;
 	
 	public String getShortString(UrlModel urlModel) throws Exception {
-		String regex = "(http|Http|Https|https|ftp)?:?(\\/\\/www)?\\..*\\..*";
+		String regex = "(http|Http|Https|https|ftp)?:?(\\/\\/)?(www)?\\..*\\..*";
 		String url = urlModel.getUrl();
 		if(!url.matches(regex)) {
 			throw new Exception("UNCORRECT_URL");
