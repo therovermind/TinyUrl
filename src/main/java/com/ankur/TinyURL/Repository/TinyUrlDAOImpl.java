@@ -7,10 +7,12 @@ import javax.persistence.PersistenceContext;
 
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ankur.TinyURL.Entity.TinyUrlEntity;
 
 @Repository
+@Transactional
 public class TinyUrlDAOImpl implements TinyUrlDAO {
 	
 	@PersistenceContext
@@ -19,7 +21,6 @@ public class TinyUrlDAOImpl implements TinyUrlDAO {
 	public void saveUrl(TinyUrlEntity t) {
 		e.persist(t);
 		e.flush();
-		
 	}
 	
 	public String getUrl(int no) throws Exception {
