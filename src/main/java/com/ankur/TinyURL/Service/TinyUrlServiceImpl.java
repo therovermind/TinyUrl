@@ -3,6 +3,7 @@ package com.ankur.TinyURL.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ankur.TinyURL.Entity.TinyUrlEntity;
 import com.ankur.TinyURL.Model.UrlModel;
@@ -10,6 +11,7 @@ import com.ankur.TinyURL.Repository.TinyUrlDAO;
 import com.ankur.TinyURL.Util.TinyURLUtil;
 
 @Service
+@Transactional
 public class TinyUrlServiceImpl implements TinyUrlService {
 	
 	@Autowired
